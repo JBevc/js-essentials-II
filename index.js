@@ -1,56 +1,96 @@
 // 00 - Create a forked repo from this repository and clone it in your local machine.
 
 // 01 - Function
-// getTotal(inventory: [{article: '🍔', price: 15, quantity: '1'}, {article: '🍟', price: 10, quantity: '2'}])
+inventory = [
+  { article: "🍔", price: 15, quantity: "1" },
+  { article: "🍟", price: 10, quantity: "2" },
+];
+
+getTotal = inventory.reduce((acc, e) => {
+  return acc + e.price * e.quantity;
+}, 0);
+//console.log(getTotal);
 // it should return the total. for the example data 👆 it should be: 35. (15x1 + 10x2)
 
 // 02 - Function
-// countBanana(inventory:['🥑','🍌','🥭', '🍌']})
+function countBanana(inventory) {
+  let arr = inventory.filter((e) => e === "🍌");
+  console.log(arr.length);
+}
+//countBanana((inventory = ["🥑", "🍌", "🥭", "🍌"]));
 
 // 03- Function
-//   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-//   console.log(filterEvenNumbers(numbers)); // Output: [2, 4, 6, 8, 10]
+function filterEvenNumbers(arr) {
+  return arr.filter((e) => e % 2 == 0);
+}
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+//console.log(filterEvenNumbers(numbers)); // Output: [2, 4, 6, 8, 10]
 
 // 04 - function
-//   const numbers = [1, 2, 3, 4, 5];
-//   console.log(squareNumbers(numbers)); // Output: [1, 4, 9, 16, 25]
+function squareNumbers(arr) {
+  return arr.map((e) => e ** 2);
+}
+const numbers2 = [1, 2, 3, 4, 5];
+//console.log(squareNumbers(numbers2)); // Output: [1, 4, 9, 16, 25]
 
 // 05 - function
-//   const numbers = [1, 2, 3, 4, 5];
-//   console.log(findMax(numbers)); // Output: 5
+function findMax(arr) {
+  let sorted = arr.toSorted();
+  return sorted.pop();
+}
+
+const numbers3 = [1, 2, 3, 4, 5];
+//console.log(findMax(numbers3)); // Output: 5
 
 // 06 - function
-//   const people = [
-//     { name: "Juan", age: 25 },
-//     { name: "Carla", age: 30 },
-//     { name: "Lucia", age: 35 },
-//     { name: "El Chengue", age: 49 }
-//   ];
-//   console.log(calculateAverageAge(people)); // Output: 32.5
+function calculateAverageAge(arrayOfPeople) {
+  let totalAge = arrayOfPeople.reduce((acc, e) => {
+    return acc + e.age;
+  }, 0);
+  return totalAge / arrayOfPeople.length;
+}
 
-// 07 - function  combinedHobbies(persons)
+const people = [
+  { name: "Juan", age: 25 },
+  { name: "Carla", age: 30 },
+  { name: "Lucia", age: 35 },
+  { name: "El Chengue", age: 49 },
+];
+//console.log(calculateAverageAge(people)); // Output: 32.5
+
+// 07 - function
 // Function to combine hobbies from all persons
 
-// const persons = [
-//     {
-//       name: 'Paula',
-//       hobbies: ['reading 📚', 'gardening 🌱', 'painting 🎨']
-//     },
-//     {
-//       name: 'Martin',
-//       hobbies: ['cycling 🚴', 'cooking 🍳', 'hiking 🥾']
-//     },
-//     {
-//       name: 'Juan',
-//       hobbies: ['photography 📸', 'traveling ✈️', 'swimming 🏊‍♂️']
-//     },
-//     {
-//       name: 'Veronica',
-//       hobbies: ['dancing 💃', 'singing 🎤', 'running 🏃‍♀️']
-//     }
-//   ];
+function combinedHobbies(persons) {
+  let allHobies = [];
+  persons.forEach((element) => {
+    allHobies = allHobies.concat(element.hobbies);
+  });
+  return allHobies;
+}
 
-// combinedHobbies(persons)
+const persons = [
+  {
+    name: "Paula",
+    hobbies: ["reading 📚", "gardening 🌱", "painting 🎨"],
+  },
+  {
+    name: "Martin",
+    hobbies: ["cycling 🚴", "cooking 🍳", "hiking 🥾"],
+  },
+  {
+    name: "Juan",
+    hobbies: ["photography 📸", "traveling ✈️", "swimming 🏊‍♂️"],
+  },
+  {
+    name: "Veronica",
+    hobbies: ["dancing 💃", "singing 🎤", "running 🏃‍♀️"],
+  },
+];
+
+//console.log(combinedHobbies(persons));
+
 // Expected output:
 // [
 //   'reading 📚', 'gardening 🌱', 'painting 🎨',
@@ -60,17 +100,23 @@
 // ]
 
 // 08 - function printChemicalInfo(chemicals)
-// const chemicals = [
-//     {
-//       compoundId: 'CHEM001',
-//       name: 'Aspirin',
-//       formula: 'C9H8O4',
-//       description: 'Aspirin is a common medication used to reduce pain and inflammation.',
-//       molecularWeight: '180.16 g/mol',
-//       meltingPoint: '135°C',
-//       boilingPoint: '140°C',
-//       solubility: 'Slightly soluble in water'
-//     },
+function printChemicalInfo(chemicals) {
+  const arr = chemicals.map((e) => JSON.parse(e));
+}
+
+const chemicals = [
+  {
+    compoundId: "CHEM001",
+    name: "Aspirin",
+    formula: "C9H8O4",
+    description:
+      "Aspirin is a common medication used to reduce pain and inflammation.",
+    molecularWeight: "180.16 g/mol",
+    meltingPoint: "135°C",
+    boilingPoint: "140°C",
+    solubility: "Slightly soluble in water",
+  },
+];
 //     {
 //       compoundId: 'CHEM002',
 //       name: 'Caffeine',
@@ -93,7 +139,7 @@
 //     }
 //   ];
 
-//printChemicalInfo(chemicals)
+printChemicalInfo(chemicals);
 //Expected output
 
 // +-------------------------------------------------------+
