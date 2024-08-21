@@ -101,7 +101,18 @@ const persons = [
 
 // 08 - function printChemicalInfo(chemicals)
 function printChemicalInfo(chemicals) {
-  const arr = chemicals.map((e) => JSON.parse(e));
+  chemicals.forEach((element) => {
+    console.log("+-------------------------------------------------------+");
+    // recorro cada elemento
+    // guardo sus claves en un array
+    let elementKeys = Object.keys(element);
+    elementKeys.forEach((elemProperty) => {
+      let formattedKey =
+        elemProperty.charAt(0).toUpperCase() + elemProperty.slice(1);
+      console.log(`| ${formattedKey}: ${element[elemProperty]}`);
+    });
+    console.log("+-------------------------------------------------------+\n");
+  });
 }
 
 const chemicals = [
@@ -116,30 +127,31 @@ const chemicals = [
     boilingPoint: "140°C",
     solubility: "Slightly soluble in water",
   },
+  {
+    compoundId: "CHEM002",
+    name: "Caffeine",
+    formula: "C8H10N4O2",
+    description:
+      "Caffeine is a stimulant found in coffee, tea, and various energy drinks.",
+    molecularWeight: "194.19 g/mol",
+    meltingPoint: "238°C",
+    boilingPoint: "178°C",
+    solubility: "Freely soluble in water",
+  },
+  {
+    compoundId: "CHEM003",
+    name: "Ethanol",
+    formula: "C2H6O",
+    description:
+      "Ethanol, also known as alcohol, is commonly used as a solvent and in alcoholic beverages.",
+    molecularWeight: "46.07 g/mol",
+    meltingPoint: "-114.1°C",
+    boilingPoint: "78.37°C",
+    solubility: "Miscible with water",
+  },
 ];
-//     {
-//       compoundId: 'CHEM002',
-//       name: 'Caffeine',
-//       formula: 'C8H10N4O2',
-//       description: 'Caffeine is a stimulant found in coffee, tea, and various energy drinks.',
-//       molecularWeight: '194.19 g/mol',
-//       meltingPoint: '238°C',
-//       boilingPoint: '178°C',
-//       solubility: 'Freely soluble in water'
-//     },
-//     {
-//       compoundId: 'CHEM003',
-//       name: 'Ethanol',
-//       formula: 'C2H6O',
-//       description: 'Ethanol, also known as alcohol, is commonly used as a solvent and in alcoholic beverages.',
-//       molecularWeight: '46.07 g/mol',
-//       meltingPoint: '-114.1°C',
-//       boilingPoint: '78.37°C',
-//       solubility: 'Miscible with water'
-//     }
-//   ];
 
-printChemicalInfo(chemicals);
+//printChemicalInfo(chemicals);
 //Expected output
 
 // +-------------------------------------------------------+
@@ -177,50 +189,62 @@ printChemicalInfo(chemicals);
 // +-------------------------------------------------------+
 
 // 09 - function getGetUniqueGuestList(guestList)
-// const guestList = ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'Alice 🙆🏻‍♀️', 'David 🤵🏿‍♂️'];
+const guestList = ["Alice 🙆🏻‍♀️", "Bob 🙍🏼", "Charlie 👨🏼‍🚀", "Alice 🙆🏻‍♀️", "David 🤵🏿‍♂️"];
+function getGetUniqueGuestList(list) {
+  const noRepeatList = new Set(list);
+  return noRepeatList;
+}
+//console.log(getGetUniqueGuestList(guestList));
 
 // Remove duplicated elements from the  guests list
 // Expected getGetUniqueGuestList(guestList)) ['Alice 🙆🏻‍♀️', 'Bob 🙍🏼', 'Charlie 👨🏼‍🚀', 'David 🤵🏿‍♂️']
 
 // 10 - function showUserProfiles(user)
-// User data
+function showUserProfile(user) {
+  //let userprofiles = [...user];
+}
 
-// const user1 = {
-//     id: 1,
-//     name: 'Carol Smith',
-//     profile: {
-//       social: {
-//          twitter: 'carol.smith',
-//          facebook: 'carol.smith77'
-//      }
-//    }
-//};
+const user1 = {
+  id: 1,
+  name: "Carol Smith",
+  profile: {
+    social: {
+      twitter: "carol.smith",
+      facebook: "carol.smith77",
+    },
+  },
+};
 
-// const user2 = {
-//     id: 2,
-//     name: 'Jane Smith',
-//     profile: {
-//       email: 'jane.smith@example.com'
-//     }
-//};
+const user2 = {
+  id: 2,
+  name: "Jane Smith",
+  profile: {
+    email: "jane.smith@example.com",
+  },
+};
 
-//   showUserProfile(user1); // Expected output: 'carol.smith, carol.smith77'
-//   showUserProfile(user2); // Expected output: 'jane.smith@example.com'
+showUserProfile(user1); // Expected output: 'carol.smith, carol.smith77'
+//showUserProfile(user2); // Expected output: 'jane.smith@example.com'
 
 // 11 - function sortLeaderBoardByScoreDesc(leaderBoard)
 // The function should sort the players by score as it's displayed on the expected output
+function sortPlayers(list) {
+  return list.sort((a, b) => b.score - a.score);
+}
 
-// const leaderBoard = [
-//   { player: "John", score: 80 },
-//   { player: "Charlie", score: 20 },
-//   { player: "Julio", score: 50 },
-//   { player: "Bob", score: 80 },
-//   { player: "Bobby", score: 11 },
-//   { player: "Tommy", score: 43 },
-//   { player: "Eric", score: 99 },
-//   { player: "Alice", score: 100 },
-//   { player: "Alfred", score: 30 },
-// ];
+const leaderBoard = [
+  { player: "John", score: 80 },
+  { player: "Charlie", score: 20 },
+  { player: "Julio", score: 50 },
+  { player: "Bob", score: 80 },
+  { player: "Bobby", score: 11 },
+  { player: "Tommy", score: 43 },
+  { player: "Eric", score: 99 },
+  { player: "Alice", score: 100 },
+  { player: "Alfred", score: 30 },
+];
+
+console.log(sortPlayers(leaderBoard));
 
 // Expected output:
 // [
